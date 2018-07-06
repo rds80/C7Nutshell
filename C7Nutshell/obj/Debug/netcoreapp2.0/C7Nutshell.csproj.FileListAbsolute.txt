@@ -1,0 +1,11 @@
+C:\Users\rippl\OneDrive\C#\Books\Project\C7Nutshell\C7Nutshell\bin\Debug\netcoreapp2.0\C7Nutshell.deps.json
+C:\Users\rippl\OneDrive\C#\Books\Project\C7Nutshell\C7Nutshell\bin\Debug\netcoreapp2.0\C7Nutshell.runtimeconfig.json
+C:\Users\rippl\OneDrive\C#\Books\Project\C7Nutshell\C7Nutshell\bin\Debug\netcoreapp2.0\C7Nutshell.runtimeconfig.dev.json
+C:\Users\rippl\OneDrive\C#\Books\Project\C7Nutshell\C7Nutshell\bin\Debug\netcoreapp2.0\C7Nutshell.dll
+C:\Users\rippl\OneDrive\C#\Books\Project\C7Nutshell\C7Nutshell\bin\Debug\netcoreapp2.0\C7Nutshell.pdb
+C:\Users\rippl\OneDrive\C#\Books\Project\C7Nutshell\C7Nutshell\obj\Debug\netcoreapp2.0\C7Nutshell.csprojAssemblyReference.cache
+C:\Users\rippl\OneDrive\C#\Books\Project\C7Nutshell\C7Nutshell\obj\Debug\netcoreapp2.0\C7Nutshell.csproj.CoreCompileInputs.cache
+C:\Users\rippl\OneDrive\C#\Books\Project\C7Nutshell\C7Nutshell\obj\Debug\netcoreapp2.0\C7Nutshell.AssemblyInfoInputs.cache
+C:\Users\rippl\OneDrive\C#\Books\Project\C7Nutshell\C7Nutshell\obj\Debug\netcoreapp2.0\C7Nutshell.AssemblyInfo.cs
+C:\Users\rippl\OneDrive\C#\Books\Project\C7Nutshell\C7Nutshell\obj\Debug\netcoreapp2.0\C7Nutshell.dll
+C:\Users\rippl\OneDrive\C#\Books\Project\C7Nutshell\C7Nutshell\obj\Debug\netcoreapp2.0\C7Nutshell.pdb
