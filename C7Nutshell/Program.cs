@@ -46,6 +46,16 @@ namespace C7Nutshell
 
             WriteLine(p1.X);   //9
             WriteLine(p2.X);    //9
+
+            PointClass pNull = null;
+            WriteLine(pNull == null);   //True
+
+            //Following line generates a runtime error
+            //(a NullReferenceException is thrown for reference type)
+            WriteLine(pNull.X);
+
+            //Point p = null; //Compile-time error for value type
+            //int x = null;   //Complile-time eror for value type
         }
 
         private static void InstanceStaticExample()
