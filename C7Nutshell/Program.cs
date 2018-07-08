@@ -8,8 +8,44 @@ namespace C7Nutshell
         static void Main(string[] args)
         {
             //CustomTypeExample();
-            InstanceStaticExample();
+            //InstanceStaticExample();
+            //StructExample();
+            ClassExample();
             Read();
+        }
+
+        public struct Point { public int X, Y; }
+
+        private static void StructExample()
+        {
+            Point p1 = new Point();
+            p1.X = 7;
+
+            Point p2 = p1;      //assignment causes company
+            WriteLine(p1.X);     //7
+            WriteLine(p2.X);     //7
+
+            p1.X = 9;           //Change p1.X
+
+            WriteLine(p1.X);     //9
+            WriteLine(p2.X);     //7
+        }
+
+        public class PointClass { public int X, Y; }
+
+        private static void ClassExample()
+        {
+            Point p1 = new Point();
+            p1.X = 7;
+
+            Point p2 = p1;  //Copies p1 reference
+            WriteLine(p1.X);    //7
+            WriteLine(p2.X);    //7
+
+            p1.X = 9;           //Change p1.X
+
+            WriteLine(p1.X);   //9
+            WriteLine(p2.X);    //9
         }
 
         private static void InstanceStaticExample()
