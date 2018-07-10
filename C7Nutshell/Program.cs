@@ -22,7 +22,11 @@ namespace C7Nutshell
             //Point[] a = new Point[1000];
             //int x = a[500].X;
             //HeapGCExample();
-            DefiniteAssignmentExample();
+            //DefiniteAssignmentExample();
+            int x = 8;
+            PassByValueExample passByValueExample = new PassByValueExample();
+            passByValueExample.Foo(x);
+            WriteLine($"{x} in Main");
             Read();
         }
 
@@ -190,5 +194,13 @@ namespace C7Nutshell
             public static int x;
         }
 
+        public class PassByValueExample
+        {
+            public void Foo (int p)
+            {
+                p += 1;
+                WriteLine(p);
+            }
+        }
     }
 }
