@@ -17,6 +17,11 @@ namespace C7Nutshell
             set => name = value ?? "";
         }
 
+        static Person()
+        {
+            WriteLine("test");
+        }
+
         public Person(string name) => Name = name;
 
         ~Person() => WriteLine("finalize");

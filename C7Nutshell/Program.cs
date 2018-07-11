@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using System.Threading;
 using static System.Console;
 
 namespace C7Nutshell
@@ -34,10 +35,10 @@ namespace C7Nutshell
             //PassByReferenceTypeByValueExample passByReferenceTypeByValueExample = new PassByReferenceTypeByValueExample();
             //passByReferenceTypeByValueExample.Foo(sb);
             //WriteLine(sb.ToString());
-            int x = 8;
-            PassByReference passByReference = new PassByReference();
-            passByReference.Foo(ref x);     //ask foo to deal directly with x
-            WriteLine(x);   //x is now 9
+            //int x = 8;
+            //PassByReference passByReference = new PassByReference();
+            //passByReference.Foo(ref x);     //ask foo to deal directly with x
+            //WriteLine(x);   //x is now 9
             //WriteLine($"y before swap is {y}");
             //SwapExample.Swap(ref x, ref y);
             //WriteLine($"x is {x}");
@@ -51,8 +52,28 @@ namespace C7Nutshell
             //FibonacciSequence();
             //float value = 4.2F;
             //FloatExample(value);
-            DeconstructorExample();
+            //Person person = new Person("test");
+            //DeconstructorExample();
+            StaticConstructorExample();
             Read();
+        }
+
+        private static void StaticConstructorExample()
+        {
+            //Creation of this instance activates the static constructor.
+            Bus bus1 = new Bus(71);
+
+            //Creates a second bus.
+            Bus bus2 = new Bus(72);
+
+            //Send bus1 on its way.
+            bus1.Drive();
+
+            //Wait for bus2 to warm up.
+            Thread.Sleep(25);
+
+            //Send bus2 on its way.
+            bus2.Drive();
         }
 
         private static void DeconstructorExample()
