@@ -6,6 +6,9 @@ namespace C7Nutshell
 {
     class Program
     {
+        //Variable for Implication by Ref
+        static int x;
+
         static void Main(string[] args)
         {
             //CustomTypeExample();
@@ -23,17 +26,101 @@ namespace C7Nutshell
             //int x = a[500].X;
             //HeapGCExample();
             //DefiniteAssignmentExample();
+            //int x = 8;
+            //PassByValueExample passByValueExample = new PassByValueExample();
+            //passByValueExample.Foo(x);
+            //WriteLine($"{x} in Main");
+            //StringBuilder sb = new StringBuilder();
+            //PassByReferenceTypeByValueExample passByReferenceTypeByValueExample = new PassByReferenceTypeByValueExample();
+            //passByReferenceTypeByValueExample.Foo(sb);
+            //WriteLine(sb.ToString());
             int x = 8;
-            PassByValueExample passByValueExample = new PassByValueExample();
-            passByValueExample.Foo(x);
-            WriteLine($"{x} in Main");
+            PassByReference passByReference = new PassByReference();
+            passByReference.Foo(ref x);     //ask foo to deal directly with x
+            WriteLine(x);   //x is now 9
+            //WriteLine($"y before swap is {y}");
+            //SwapExample.Swap(ref x, ref y);
+            //WriteLine($"x is {x}");
+            //WriteLine($"y is {y}");
+            //OutExampleMethod();
+            //ImplicationPassByRef(out x);
+            //Params Example
+            //int total = ParamsExample(1, 2, 3, 4);
+            //WriteLine(total);
+            //NamedArgumentExample(x: 1, y: 2);
+            //FibonacciSequence();
+            //float value = 4.2F;
+            //FloatExample(value);
+            DeconstructorExample();
             Read();
+        }
+
+        private static void DeconstructorExample()
+        {
+            var joe = new Person("John Doe");
+            var (first, last) = joe;    //deconstruction
+            WriteLine(first);
+            WriteLine(last);
+        }
+
+        private static void ImplicationPassByRef(out int y)
+        {
+            WriteLine($"x value before assigning y is {x}");
+            y = 1;
+            WriteLine($"x value after assigning y is {x}");
+        }
+
+        private static void OutExampleMethod()
+        {
+            //string a, b;
+            //OutExample.Split("Stevie Ray Vaughan", out a, out b);
+            //In c# 7, syntax
+            //OutExample.Split("Stevie Ray Vaughan", out string a, out string b);
+            //To discard an out parameter
+            //OutExample.Split("Stevie Ray Vaughan", out string a, out _);
+            //WriteLine(a);   //Stevie Ray
+            //WriteLine(b);   //Vaughan
+            OutExample.Foo(1); //1, 0
+        }
+
+        private static void NamedArgumentExample(int x, int y)
+        {
+            WriteLine(x + ", " + y);
         }
 
         public struct Point
         {
             public int X; //4 bytes
             public int Y; //4 bytes
+        }
+
+        private static void FloatExample(int example)
+        {
+            WriteLine(example.ToString());
+        }
+
+        private static int ParamsExample(params int[] ints)
+        {
+            int sum = 0;
+            for (int i = 0; i < ints.Length; i++)
+            {
+                sum += ints[i];
+            }
+
+            return sum;
+        }
+
+        private static void FibonacciSequence()
+        {
+            int prevFib = 1, curFib = 1;
+
+            for (int i = 0; i < 10; i++)
+            {
+                WriteLine(prevFib);
+                int newFib = prevFib + curFib;
+                prevFib = curFib;
+                curFib = newFib;
+            }
         }
 
         private static void StructExample()
@@ -197,6 +284,24 @@ namespace C7Nutshell
         public class PassByValueExample
         {
             public void Foo (int p)
+            {
+                p += 1;
+                WriteLine(p);
+            }
+        }
+
+        public class PassByReferenceTypeByValueExample
+        {
+            public void Foo (StringBuilder fooSB)
+            {
+                fooSB.Append("test");
+                fooSB = null;
+            }
+        }
+
+        public class PassByReference
+        {
+            public void Foo(ref int p)
             {
                 p += 1;
                 WriteLine(p);
