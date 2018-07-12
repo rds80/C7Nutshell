@@ -54,8 +54,23 @@ namespace C7Nutshell
             //FloatExample(value);
             //Person person = new Person("test");
             //DeconstructorExample();
-            StaticConstructorExample();
+            //StaticConstructorExample();
+            //DeconstructorExample2();
+            ObjectInitializerExample();
             Read();
+        }
+
+        private static void ObjectInitializerExample()
+        {
+            Bunny b1 = new Bunny { Name = "Bo", LikesCarrots = true, LikesHumans = false };
+            Bunny b2 = new Bunny("Bo") { LikesCarrots = true, LikesHumans = false };
+        }
+
+        private static void DeconstructorExample2()
+        {
+            Rectangle rectangle = new Rectangle(3, 4);
+            (float width, float height) = rectangle;    //Deconstruction
+            WriteLine(width + " " + height);
         }
 
         private static void StaticConstructorExample()
