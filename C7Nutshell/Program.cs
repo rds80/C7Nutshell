@@ -56,8 +56,17 @@ namespace C7Nutshell
             //DeconstructorExample();
             //StaticConstructorExample();
             //DeconstructorExample2();
-            ObjectInitializerExample();
+            //ObjectInitializerExample();
+            IndexerExample();
             Read();
+        }
+
+        private static void IndexerExample()
+        {
+            Sentence s = new Sentence();
+            WriteLine(s[3]);
+            s[3] = "kangaroo";
+            WriteLine(s[3]);
         }
 
         private static void ObjectInitializerExample()
