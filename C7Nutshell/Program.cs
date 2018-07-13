@@ -57,8 +57,106 @@ namespace C7Nutshell
             //StaticConstructorExample();
             //DeconstructorExample2();
             //ObjectInitializerExample();
-            IndexerExample();
+            //IndexerExample();
+            //StaticFieldInitializerExample();
+            //InheritanceExample();
+            //PolymorphismExample();
+            //UpcastExample();
+            //DowncastExample();
+            //WrongDowncastExample();
+            //AsExample();
+            //VirtualFunctionExample();
+            //AbstractExample();
+            DifferenceBetweenOverriderHiderExample();
             Read();
+        }
+
+        private static void DifferenceBetweenOverriderHiderExample()
+        {
+            Overrider over = new Overrider();
+            BaseClass b1 = over;
+            over.Foo();  //Overrider.Foo
+            b1.Foo();   //Overrider.Foo
+
+            Hider h = new Hider();
+            BaseClass b2 = h;
+            h.Foo();    //Hider.Foo
+            b2.Foo();   //BaseClass.Foo
+        }
+
+        private static void AbstractExample()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void VirtualFunctionExample()
+        {
+            House mansion = new House { Name = "McMansion", Mortgage = 250000 };
+            Asset a = mansion;
+            WriteLine(mansion.Liability);   //250000
+            WriteLine(a.Liability); //250000
+        }
+
+        private static void AsExample()
+        {
+            Asset a = new Asset();
+            Stock s = a as Stock; //s is null; no exception thrown
+        }
+
+        private static void DowncastExample()
+        {
+            Stock msft = new Stock { Name = "MSFT", SharesOwned = 100 };
+            Asset a = msft; //upcast
+            Stock s = (Stock)a; //downcast
+            WriteLine(s.SharesOwned); //No error
+            WriteLine(s == a); //true
+            WriteLine(s == msft);//true
+        }
+
+        private static void UpcastExample()
+        {
+            Stock msft = new Stock();
+            Asset a = msft; //upcast
+            WriteLine(a == msft); //true
+            WriteLine(a.Name); //ok
+            //WriteLine(a.SharesOwned); //Error: SharesOwned undefined
+        }
+
+        private static void WrongDowncastExample()
+        {
+            House h = new House();
+            Asset a = h; //Upcast always succeeds
+            Stock s = (Stock)a; //Downcast fails: a isn't a stock
+        }
+
+        private static void PolymorphismExample()
+        {
+            Stock msft = new Stock { Name = "MSFT", SharesOwned = 100 };
+            House mansion = new House { Name = "Mansion", Mortgage = 25000 };
+
+            Display(msft);
+            Display(mansion);
+        }
+
+        public static void Display(Asset asset)
+        {
+            WriteLine(asset.Name);
+        }
+
+        private static void InheritanceExample()
+        {
+            Stock msft = new Stock { Name = "MSFT", SharesOwned = 100 };
+            WriteLine(msft.Name); ///MSFT
+            WriteLine(msft.SharesOwned); //1000
+
+            House mansion = new House { Name = "Mansion", Mortgage = 25000 };
+            WriteLine(mansion.Name);
+            Write(mansion.Mortgage);
+        }
+
+        private static void StaticFieldInitializerExample()
+        {
+            WriteLine(Foo.X);
         }
 
         private static void IndexerExample()
@@ -328,7 +426,7 @@ namespace C7Nutshell
 
         public class PassByValueExample
         {
-            public void Foo (int p)
+            public void Foo(int p)
             {
                 p += 1;
                 WriteLine(p);
@@ -337,7 +435,7 @@ namespace C7Nutshell
 
         public class PassByReferenceTypeByValueExample
         {
-            public void Foo (StringBuilder fooSB)
+            public void Foo(StringBuilder fooSB)
             {
                 fooSB.Append("test");
                 fooSB = null;
