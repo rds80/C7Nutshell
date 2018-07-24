@@ -12,6 +12,9 @@ namespace C7Nutshell
         //Variable for Implication by Ref
         static int x;
 
+        //Delegate example
+        delegate int Transformer(int x);
+
         static void Main(string[] args)
         {
             //CustomTypeExample();
@@ -76,9 +79,19 @@ namespace C7Nutshell
             //ExplicitInterfacesExample();
             //InterfaceMembersVirtually();
             //EnumExample();
-            GenericsExample();
+            //GenericsExample();
+            DelegateExample();
             Read();
         }
+
+        private static void DelegateExample()
+        {
+            Transformer t = Square; //Create delegate instance
+            int result = t(3);  //invoke delegate
+            WriteLine(result); //9
+        }
+
+        static int Square(int x) => x * x;
 
         private static void GenericsExample()
         {
