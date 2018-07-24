@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using static System.Console;
 
-namespace C7Nutshell
+namespace C7Nutshell.Base2
 {
     class BaseClass
     {

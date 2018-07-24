@@ -2,6 +2,8 @@
 using System.Text;
 using System.Threading;
 using static System.Console;
+using b1 = C7Nutshell.Base;
+using b2 = C7Nutshell.Base2;
 
 namespace C7Nutshell
 {
@@ -67,19 +69,103 @@ namespace C7Nutshell
             //AsExample();
             //VirtualFunctionExample();
             //AbstractExample();
-            DifferenceBetweenOverriderHiderExample();
+            //DifferenceBetweenOverriderHiderExample();
+            //DifferenceBetweenOverriderHiderExample2();
+            //StaircaseExample(6);
+            //AccessModifiers();
+            //ExplicitInterfacesExample();
+            //InterfaceMembersVirtually();
+            //EnumExample();
+            GenericsExample();
             Read();
+        }
+
+        private static void GenericsExample()
+        {
+            var stack = new Stack<int>();
+            stack.Push(5);
+            stack.Push(10);
+            int x = stack.Pop();
+            int y = stack.Pop();
+        }
+
+        private static void EnumExample()
+        {
+            BorderSides leftRight = BorderSides.Left | BorderSides.Right;
+
+            if ((leftRight & BorderSides.Left) != 0)
+                WriteLine("Includes Left");     //Includes Left
+
+            string formatted = leftRight.ToString();    //"Left, Right"
+
+            BorderSides s = BorderSides.Left;
+
+            s |= BorderSides.Right;
+            WriteLine(s == leftRight); //true
+
+            s ^= BorderSides.Right; //Toggles BorderSides.Right
+            WriteLine(s);
+        }
+
+        private static void InterfaceMembersVirtually()
+        {
+            RichTextBox r = new RichTextBox();
+            r.Undo(); //RichTextBox.Undo
+            ((IUndoable)r).Undo(); //RichTextBox.Undo
+            ((TextBox)r).Undo(); //RichTextBox.Undo
+        }
+
+        private static void ExplicitInterfacesExample()
+        {
+            Widget w = new Widget();
+            w.Foo();    //Widget's implementation of I1.Foo
+            ((I1)w).Foo(); //Widget's implementation of I1.Foo
+            ((I2)w).Foo(); //Widget's implementation of I2.Foo
+        }
+
+        private static void AccessModifiers()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void StaircaseExample(int n)
+        {
+            char sign = '#';
+            String formatter = string.Empty;
+            int spaceCount = n -1;
+
+            for (int i = 1; i <= n; i++)
+            {
+                if (i != n)
+                {
+                    formatter = new String(' ', spaceCount);
+                }
+                else
+                {
+                    formatter = string.Empty;
+                }
+
+                string pattern = new string(sign, i);
+                string output = String.Concat(formatter, pattern);
+                Console.WriteLine(output);
+                spaceCount--;
+            }
+        }
+
+        private static void DifferenceBetweenOverriderHiderExample2()
+        {
+            
         }
 
         private static void DifferenceBetweenOverriderHiderExample()
         {
             Overrider over = new Overrider();
-            BaseClass b1 = over;
+            b2.BaseClass b1 = over;
             over.Foo();  //Overrider.Foo
             b1.Foo();   //Overrider.Foo
 
             Hider h = new Hider();
-            BaseClass b2 = h;
+            b2.BaseClass b2 = h;
             h.Foo();    //Hider.Foo
             b2.Foo();   //BaseClass.Foo
         }
@@ -233,8 +319,12 @@ namespace C7Nutshell
 
         public struct Point
         {
-            public int X; //4 bytes
-            public int Y; //4 bytes
+            public int X, Y;
+            public Point (int x, int y)
+            {
+                this.X = x;
+                this.Y = y;
+            }
         }
 
         private static void FloatExample(int example)
@@ -450,5 +540,8 @@ namespace C7Nutshell
                 WriteLine(p);
             }
         }
+
+        [Flags]
+        public enum BorderSides { None=0, Left=1, Right=2, Top=4, Bottom=8 }
     }
 }
